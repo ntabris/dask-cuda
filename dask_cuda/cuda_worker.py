@@ -109,16 +109,6 @@ class CUDAWorker(Server):
         preload_argv = kwargs.pop("preload_argv", [])
         kwargs = {"worker_port": None, "listen_address": None, **kwargs}
 
-        if (
-            not scheduler
-            and not scheduler_file
-            and dask.config.get("scheduler-address", None) is None
-        ):
-            raise ValueError(
-                "Need to provide scheduler address like\n"
-                "dask-worker SCHEDULER_ADDRESS:8786"
-            )
-
         if isinstance(scheduler, Cluster):
             scheduler = scheduler.scheduler_address
 
