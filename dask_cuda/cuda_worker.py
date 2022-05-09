@@ -200,8 +200,8 @@ class CUDAWorker(Server):
                 memory_limit=memory_limit,
                 interface=interface,
                 host=host,
-                preload=(list(preload) or []) + ["dask_cuda.initialize"],
-                preload_argv=(list(preload_argv) or []) + ["--create-cuda-context"],
+                preload_nanny=(list(preload) or []) + ["dask_cuda.initialize"],
+                preload_nanny_argv=(list(preload_argv) or []) + ["--create-cuda-context"],
                 security=security,
                 env={"CUDA_VISIBLE_DEVICES": cuda_visible_devices(i)},
                 plugins={
